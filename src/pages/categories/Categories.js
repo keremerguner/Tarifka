@@ -1,16 +1,21 @@
 import axios from 'axios'
 import React from 'react'
-import { SafeAreaView, View, Text, FlatList } from 'react-native'
+import { SafeAreaView, View, Text, FlatList, Button } from 'react-native'
 import Config from 'react-native-config'
 import CategoriesCard from '../../components/CategoriesCard'
 import useFetch from '../../hooks/useFetch'
 import Lottie from 'lottie-react-native';
 
-const Categories = () => {
+const Categories = ({navigation}) => {
 
     const { data, loading, error } = useFetch(Config.API_CATEGORIES)
 
-    const renderCategory = ({ item }) => <CategoriesCard category={item} />;
+    const handleCategorySelect = (strCategory) => {
+        navigation.navigate('Meals', { strCategory })
+
+    }
+
+    const renderCategory = ({ item }) => <CategoriesCard category={item} onSelect={() => handleCategorySelect(item.strCategory)} />;
 
 
     if (loading) {

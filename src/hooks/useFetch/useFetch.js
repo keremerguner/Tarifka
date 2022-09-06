@@ -19,7 +19,6 @@ function useFetch(url) {
         } catch (err) {
             setError(err.message)
             setLoading(false)
-            console.log(error)
         }
     }
     useEffect(() => {

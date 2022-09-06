@@ -3,10 +3,10 @@ import { SafeAreaView, View, Text, Image, TouchableWithoutFeedback } from 'react
 import Config from 'react-native-config'
 import styles from './CategoriesCard.style';
 
-const Categories = ({ category }) => {
+const Categories = ({ category, onSelect }) => {
 
     return (
-        <TouchableWithoutFeedback>
+        <TouchableWithoutFeedback onPress={onSelect} >
             <View style={styles.container}>
                 <View style={styles.body_container}>
                     <Image source={{ uri: category.strCategoryThumb }} style={styles.image} />
